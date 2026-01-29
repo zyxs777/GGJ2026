@@ -1,0 +1,17 @@
+{
+    "name": "SBlackBoard",
+    "rootNamespace": "",
+    "references": [
+        "GUID:e0b0220af1ef50a4293acc44cde802c8",
+        "GUID:a73aa5405417a2541a254c52c901db48"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
