@@ -1,0 +1,21 @@
+{
+    "name": "SConditions.BlackboardAdapter",
+    "rootNamespace": "",
+    "references": [
+        "GUID:e9c427398585b5348b51d2e12f424c4c",
+        "GUID:04f3ba58655d4cd46a2fd16e869ff283",
+        "GUID:94542b198d229bd43986b1f01401f124",
+        "GUID:e0b0220af1ef50a4293acc44cde802c8",
+        "GUID:a73aa5405417a2541a254c52c901db48",
+        "GUID:e1a11e15cfeb4574e805b764d0adaca5"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

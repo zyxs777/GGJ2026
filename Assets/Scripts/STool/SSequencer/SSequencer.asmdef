@@ -1,0 +1,21 @@
+{
+    "name": "SSequencer",
+    "rootNamespace": "",
+    "references": [
+        "GUID:e9c427398585b5348b51d2e12f424c4c",
+        "GUID:04f3ba58655d4cd46a2fd16e869ff283",
+        "GUID:31776cd02728d5944b475eaf2f05bb63",
+        "GUID:49a4d8ef4e85f194a82bae079e03d532",
+        "GUID:23d2add451ecb7d4e93f51c1a19be28c",
+        "GUID:a73aa5405417a2541a254c52c901db48"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

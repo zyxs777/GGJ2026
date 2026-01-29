@@ -1,0 +1,19 @@
+{
+    "name": "SEditorExtension",
+    "rootNamespace": "",
+    "references": [
+        "GUID:23d2add451ecb7d4e93f51c1a19be28c",
+        "GUID:31776cd02728d5944b475eaf2f05bb63"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

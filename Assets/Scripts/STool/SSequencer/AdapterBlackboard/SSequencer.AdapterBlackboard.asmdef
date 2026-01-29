@@ -1,0 +1,4 @@
+{
+	"name": "SSequencer.AdapterBlackboard",
+	"references":[ "GUID:bdb558aca196fea49b04d99425a163be", "GUID:e9c427398585b5348b51d2e12f424c4c", "GUID:80efcb0bc110429438c5c4f48ec9f761", "GUID:b3ab692729a454a4ebf0fe53304806b9", "GUID:94542b198d229bd43986b1f01401f124", "GUID:04f3ba58655d4cd46a2fd16e869ff283" ]
+}

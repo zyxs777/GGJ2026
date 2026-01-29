@@ -1,0 +1,20 @@
+{
+    "name": "SSequencer.Adpater",
+    "rootNamespace": "",
+    "references": [
+        "GUID:b3ab692729a454a4ebf0fe53304806b9",
+        "GUID:80efcb0bc110429438c5c4f48ec9f761",
+        "GUID:e9c427398585b5348b51d2e12f424c4c",
+        "GUID:a73aa5405417a2541a254c52c901db48",
+        "GUID:31776cd02728d5944b475eaf2f05bb63"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
