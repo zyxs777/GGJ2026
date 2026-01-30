@@ -1,3 +1,4 @@
+using STool.CollectionUtility;
 using STool.STypeEventBus;
 using UnityEngine;
 
@@ -5,11 +6,25 @@ namespace Global
 {
     public static class GlobalShare
     {
-        public static TypeEventBus EventBus = new();
+        #region GlobalTime
+        public static readonly DecoratedValue<float> GlobalTime = new(1, OnGlobalTimeChange);
+        private static void OnGlobalTimeChange(float timeScale)
+        {
+            GlobalTimeDelta = Time.fixedDeltaTime * timeScale;
+        }
+        public static float GlobalTimeDelta { get; private set; }
+
+        #endregion        
+        
+        public static readonly TypeEventBus EventBus = new();
         public static Collider[] Colliders = new Collider[256];
 
         public static void Reset()
         {
+            GlobalTime.Clear();
+            GlobalTime.OnValueChanged = OnGlobalTimeChange;
+            GlobalTime.Recompute();
+            
             EventBus.Reset();
         }
 
