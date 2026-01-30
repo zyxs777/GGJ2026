@@ -62,19 +62,24 @@ namespace Player
         private void DoListenGlobal()
         {
             _roundPanelInit ??= RoundPanelInit;
+            _roundPanelRequestSelected ??= RoundPanelRequestSelected;
             GlobalShare.EventBus.Subscribe(_roundPanelInit);
-            Debug.Log($"Init done");
+            GlobalShare.EventBus.Subscribe(_roundPanelRequestSelected);
         }
         private void DoNotListenGlobal()
         {
             GlobalShare.EventBus.Unsubscribe(_roundPanelInit);
+            GlobalShare.EventBus.Unsubscribe(_roundPanelRequestSelected);
         }
         
         private Action<RoundPanelEvt_Init> _roundPanelInit;
-        private Action<RoundPanelEvt_RequestSelected> _roundPanelDone;
+        private Action<RoundPanelEvt_RequestSelected> _roundPanelRequestSelected;
         private int _count;
         private void RoundPanelInit(RoundPanelEvt_Init evt)
         {
+            _roundSelectPool.ClearToPool();
+            _activeSelectPool.Clear();
+            
             gameObject.SetActive(true);
             var angle = 360f / evt.Count;
             _count = evt.Count;
@@ -85,24 +90,16 @@ namespace Player
                 var slot = _roundSelectPool.Get();
                 var trans =  slot.transform;
                 trans.localPosition = selectionSlotRadius * (Quaternion.Euler(0, 0, rotate) * Vector3.up);
+                
+                _activeSelectPool.Add(slot);
             }
             
             selectionCursor.SetAsLastSibling();
         }
         private void RoundPanelRequestSelected(RoundPanelEvt_RequestSelected evt)
         {
-            gameObject.SetActive(false);
-
-            var doneDir = Vector2.ClampMagnitude(_rightInput, 1);
-            var angle = 360f / _count;
-            var rotate = Vector2.SignedAngle(Vector2.up, _rightInput);
-            rotate += rotate < 0 ? 360 : 0;
-            rotate += angle / 2f;
-
-            var selected = Mathf.RoundToInt(rotate / angle);
-            
-            GlobalShare.EventBus.Publish(new RoundPanelEvt_RequestSelected() { Selected = selected});
-            Debug.Log($"selected: {selected}");
+            var selected = CalculateSelected();
+            GlobalShare.EventBus.Publish(new RoundPanelEvt_Selection() { SelectedIndex = selected});
         }
 
         #region Events
@@ -110,10 +107,7 @@ namespace Player
         {
             public int Count;
         }
-        public struct RoundPanelEvt_RequestSelected
-        {
-            public int Selected;
-        }
+        public struct RoundPanelEvt_RequestSelected { }
         public struct RoundPanelEvt_Selection
         {
             public int SelectedIndex;
@@ -146,6 +140,21 @@ namespace Player
             UpdateCursorPos(_rightInput);
         }
 
+        private int CalculateSelected()
+        {
+            if (_count == 0) return -1;
+            var doneDir = Vector2.ClampMagnitude(_rightInput, 1);
+
+            if (_rightInput.sqrMagnitude < .5f) return -1;
+            
+            var angle = 360f / _count;
+            var rotate = Vector2.SignedAngle(Vector2.up, doneDir);
+            rotate += rotate < 0 ? 360 : 0;
+            rotate += angle / 2f;
+
+            var selected = Mathf.FloorToInt(rotate / angle);
+            return selected;
+        }
         #endregion
 
         #region Selection List
@@ -154,6 +163,7 @@ namespace Player
         private GameObject selectPrefab;
 
         private ReusableCollection<GameObject> _roundSelectPool;
+        private readonly List<GameObject> _activeSelectPool = new();
         #region SlotPool Methods
         private GameObject CreateSlot()
         {
@@ -189,6 +199,13 @@ namespace Player
         private void UpdateCursorPos(Vector2 direction)
         {
             selectionCursor.localPosition = direction * selectionRadius;
+            var selected = CalculateSelected();
+            
+            for (var i = 0; i < _activeSelectPool.Count; i++)
+            {
+                var slot = _activeSelectPool[i];
+                slot.transform.localScale = (i == selected ? 2 : 1) * Vector3.one;
+            }
         }
         #endregion
     }
