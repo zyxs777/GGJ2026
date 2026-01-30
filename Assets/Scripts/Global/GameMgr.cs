@@ -4,10 +4,12 @@ namespace Global
 {
     public sealed class GameMgr : MonoBehaviour
     {
-        private void Awake()
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+        private static void Initialize()
         {
             GlobalShare.Reset();
-            
+
         }
+        
     }
 }
