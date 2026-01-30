@@ -12,5 +12,16 @@ namespace Global
         {
             EventBus.Reset();
         }
+
+
+        #region Cursor
+
+        public static void CenterCursor()
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.lockState = CursorLockMode.None;
+        }
+
+        #endregion
     }
 }
