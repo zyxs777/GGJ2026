@@ -114,7 +114,7 @@ public class HelmetHitTiltPersistentShake : MonoBehaviour
         var dir = mPos - pos;
         var signedAngle = Vector2.SignedAngle(playerRoot.forward.ConvertXZ(), dir.ConvertXZ());
 
-        var sign = (signedAngle > 0 ? 1 : -1);
+        var sign = (signedAngle > 0 ? -1 : 1);
         
         var deltaBase = sign * strength01 * _baseTiltPerHitDeg;
         _baseTiltDeg += deltaBase;

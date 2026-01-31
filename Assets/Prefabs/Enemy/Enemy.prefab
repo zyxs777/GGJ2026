@@ -223,18 +223,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
+    SerializedFormat: 0
+    SerializedBytes: 0b010a0000005f007000680079004d006f00740069006f006e0000000000
     ReferencedUnityObjects:
     - {fileID: 5062669481330993087}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: _phyMotion
-      Entry: 10
-      Data: 0
+    SerializationNodes: []
   spriteRenderer: {fileID: 8188489992896794858}
   _hp: 3
   hitDistance: 6
@@ -295,15 +292,15 @@ MonoBehaviour:
   rig: {fileID: 5799394077321831900}
   _helmet: {fileID: 0}
   _cam: {fileID: 0}
-  _moveSpeed: 2.8
+  _moveSpeed: 2
   _startZ: 12
-  _attackZ: 2
-  _stopZ: 2
+  _attackZ: 4
+  _stopZ: 4
   _xOffsetRange: 1.5
   _yOffsetRange: 0
   _attackInterval: {x: 0.6, y: 1.4}
   _attackStrength: {x: 0.6, y: 1}
-  attackDamage: 6
+  attackDamage: 15
   animator: {fileID: 5762899407516028317}
   attackAnima: Attack
   impulseDeclineValue: 5

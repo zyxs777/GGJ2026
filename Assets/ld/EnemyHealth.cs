@@ -29,6 +29,7 @@ public class EnemyHealth : SerializedMonoBehaviour, IDamageable
     public void TakeDamage(IDamageable.DamagePack dmg)
     {
         if (_deadTween.isAlive) return;
+        GetComponent<Animator>().Play("Run");
         var hitImpact = (transform.position - dmg.AttackerPos).SetY(0);
         _hp -= dmg.Damage;
         
@@ -40,6 +41,7 @@ public class EnemyHealth : SerializedMonoBehaviour, IDamageable
         
         if (_hp <= 0f)
         {
+            GetComponent<Animator>().Play("Die");
             _deadTween = Tween.PositionZ(transform, transform.position.z + 2 * hitDistance, 1, Ease.OutCubic)
                 .OnComplete(() => Destroy(gameObject));
         }
