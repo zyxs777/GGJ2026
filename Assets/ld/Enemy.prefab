@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7790681294467267017}
   - component: {fileID: 1762537351514847687}
   - component: {fileID: 5535088169569153393}
+  - component: {fileID: 6861651515524015110}
   - component: {fileID: 5062669481330993087}
   - component: {fileID: 7122801065906113215}
   - component: {fileID: 6773825079771199022}
@@ -62,6 +63,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyName: Enemy
+--- !u!114 &6861651515524015110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7456536819291222961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4650f1ec8383e2408d81821d7b21109, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackZMin: 0
+  _attackZMax: 4
+  _inRangeColor: {r: 0.86280537, g: 1, b: 0.7311321, a: 1}
+  _flashSpeed: 0
+  _lerpSpeed: 18
 --- !u!114 &5062669481330993087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,11 +96,13 @@ MonoBehaviour:
   _cam: {fileID: 0}
   _moveSpeed: 2.8
   _startZ: 12
-  _attackZ: 2
-  _stopZ: 1.6
+  _attackZ: 4
+  _stopZ: 4
   _xOffsetRange: 3
   _attackInterval: {x: 0.6, y: 1.4}
   _attackStrength: {x: 0.6, y: 1}
+  _indicator: {fileID: 0}
+  _worldCam: {fileID: 0}
 --- !u!65 &7122801065906113215
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -145,7 +165,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 20df1a443bb7dd445abf482e23f98d01, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a611c6d3d337d6b45997ea33da86d70e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

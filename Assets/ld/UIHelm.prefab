@@ -170,7 +170,7 @@ GameObject:
   - component: {fileID: 2671704550642549764}
   m_Layer: 0
   m_Name: trigger
-  m_TagString: Untagged
+  m_TagString: HelmetSlit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -370,6 +370,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8659826482787644151}
   - component: {fileID: 2898139439547945495}
+  - component: {fileID: 2764628289407636406}
   - component: {fileID: 6774286057074166831}
   m_Layer: 0
   m_Name: UIHelm
@@ -421,6 +422,26 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &2764628289407636406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8279836749302481002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a36efd49fb062bb4799009dfa7a155ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvas: {fileID: 0}
+  _root: {fileID: 0}
+  _slitRect: {fileID: 0}
+  _markerPrefab: {fileID: 421982449908741438, guid: c2c5bd2fc6e8943449a51124c90b038e,
+    type: 3}
+  _lifeTime: 0.5
+  _scale: 1
+  _clampToSlit: 1
 --- !u!114 &6774286057074166831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -438,4 +459,9 @@ MonoBehaviour:
   _slitRect: {fileID: 4338345760009969290}
   _damage: 1
   _attackCooldown: 0.25
-  _maxWorldDistance: 0
+  _attackZMin: 0
+  _attackZMax: 4
+  _enemyTag: Enemy
+  _alphaThreshold: 0.15
+  _sampleCount: 1
+  _logMiss: 0
