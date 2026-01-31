@@ -1281,8 +1281,19 @@ MonoBehaviour:
   inputAcceleration: 2
   inputSpeedMaximum: 5
   impulseDeclineValue: 5
-  jumpVelocity: 10
-  gravityAcceleration: {x: 0, y: -10, z: 0}
+  gravityAcceleration: {x: 0, y: -15, z: 0}
+  jumpVelocity: 12
+  jumpRefresh: 0.2
+  rushVelocity: 10
+  rushCounter:
+    rid: 2135030186854842368
+  references:
+    version: 2
+    RefIds:
+    - rid: 2135030186854842368
+      type: {class: ConsumeCounterFloat, ns: STool, asm: Tool}
+      data:
+        refreshTo: 1
 --- !u!54 &1900765874
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1325,9 +1336,12 @@ MonoBehaviour:
   playerIndex: 0
   rootTransform: {fileID: 1900765872}
   headTransform: {fileID: 594413784}
+  headLocalPosition: {x: 0, y: 1.94, z: 0}
   bodyRotateSpeed: 40
   headRotateSpeed: 20
   headPitchAngle: {x: -10, y: 10}
+  breatheAmplitude: 0.01
+  breathePeriod: 2
 --- !u!1 &2137565817
 GameObject:
   m_ObjectHideFlags: 0
