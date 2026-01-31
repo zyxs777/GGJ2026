@@ -21,6 +21,8 @@ public class EnemySimpleAI : MonoBehaviour
     [SerializeField] private float attackDamage = 6;
     
     private float _nextAttackTime;
+    private Camera _worldCam;
+    private HelmetAttackIndicator _indicator;
 
     private void Awake()
     {
