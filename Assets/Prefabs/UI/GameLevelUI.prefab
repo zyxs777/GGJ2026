@@ -53,6 +53,15 @@ MonoBehaviour:
   - prefab: {fileID: 3772901199543519452, guid: 0e046bb174dc5f84da415dbd546a2f2a,
       type: 3}
     name: "\u5173\u5361-0"
+  - prefab: {fileID: 3772901199543519452, guid: 0e046bb174dc5f84da415dbd546a2f2a,
+      type: 3}
+    name: "\u5173\u5361-1"
+  - prefab: {fileID: 3772901199543519452, guid: 0e046bb174dc5f84da415dbd546a2f2a,
+      type: 3}
+    name: "\u5173\u5361-2"
+  - prefab: {fileID: 3772901199543519452, guid: 0e046bb174dc5f84da415dbd546a2f2a,
+      type: 3}
+    name: "\u5173\u5361-3"
   slotRoot: {fileID: 8973381785504797233}
   slotPrefab: {fileID: 966852220716510371, guid: 3aef0718fc34eb34a8c89f59ffdd051e,
     type: 3}

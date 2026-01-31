@@ -149,8 +149,9 @@ namespace Player
         {
             _motionCalculation.Recompute();
             var output = _motionCalculation.Value;
-         
-            rig.velocity = output;
+
+            if (!rig.isKinematic)
+                rig.velocity = output;
         }
         #endregion
 

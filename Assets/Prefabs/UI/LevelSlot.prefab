@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6970833241141432653}
   - component: {fileID: 345847044251818086}
   - component: {fileID: 7059296247111331778}
+  - component: {fileID: 6631308829723686326}
   m_Layer: 5
   m_Name: LevelSlot
   m_TagString: Untagged
@@ -148,6 +149,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textMeshPro: {fileID: 8361725139056081690}
   prefab: {fileID: 0}
+--- !u!114 &6631308829723686326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966852220716510371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ba0c45501063c44a811a81adde9160b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 0.3
+  amplitude: 3
 --- !u!1 &1507641268791370220
 GameObject:
   m_ObjectHideFlags: 0
