@@ -1,5 +1,7 @@
 using Global;
 using Player;
+using PrimeTween;
+using Rewired;
 using UnityEngine;
 
 namespace Tester
@@ -8,15 +10,9 @@ namespace Tester
     {
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.G)) 
-                SendUIActive();
-            if (Input.GetKeyDown(KeyCode.H))
-                GlobalShare.EventBus.Publish(new RoundPanelSelection.RoundPanelEvt_RequestSelected());
-        }
-
-        private void SendUIActive()
-        {
-            GlobalShare.EventBus.Publish(new RoundPanelSelection.RoundPanelEvt_Init(){Count = 8});
+            if (Input.anyKeyDown)
+                RewiredRumble.OneShot(ReInput.players.GetPlayer(0), RewiredRumble.MotorSide.Left, 1, 5,
+                    Ease.InOutCubic);
         }
     }
 }
