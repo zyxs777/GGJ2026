@@ -18,10 +18,8 @@ public class EnemySimpleAI : MonoBehaviour
     [Header("Attack")]
     [SerializeField] private Vector2 _attackInterval = new Vector2(0.6f, 1.4f);
     [SerializeField] private Vector2 _attackStrength = new Vector2(0.6f, 1.0f);
-
+    [SerializeField] private float attackDamage = 6;
     
-    [SerializeField] private HelmetAttackIndicator _indicator;
-    [SerializeField] private Camera _worldCam;
     private float _nextAttackTime;
 
     private void Awake()
@@ -67,8 +65,13 @@ public class EnemySimpleAI : MonoBehaviour
         Vector2 screenPos = _cam.WorldToScreenPoint(transform.position);
         float strength = Random.Range(_attackStrength.x, _attackStrength.y);
 
-        _helmet.ApplyHitScreenPos(screenPos, strength);
-        _indicator?.ShowAtWorldPos(transform.position, _worldCam);
+        _helmet.ApplyHitScreenPos(
+            new HelmetHitTiltPersistentShake.AttackPack()
+            {
+                HitScreenPos = screenPos,
+                Strength01 = strength,
+                BaseHit = attackDamage
+            });
     }
 
     private void ScheduleNextAttack()
