@@ -1,6 +1,7 @@
 using System;
 using Global;
 using Player;
+using PrimeTween;
 using Rewired;
 using Sirenix.OdinInspector;
 using STool;
@@ -94,7 +95,7 @@ public class PlayerHelmetSlashAttack : MonoBehaviour
         attackCD.Refresh();        
         
         GlobalShare.EventBus.Publish(new PlayerSlashAnima.PlayerAnimaSlash());
-        
+
         foreach (var sr in srs)
         {
             if (sr == null || !sr.enabled) continue;
@@ -146,6 +147,10 @@ public class PlayerHelmetSlashAttack : MonoBehaviour
 
         if (hitCount == 0)
             Debug.Log("[SLASH] no enemy hit");
+        else
+        {
+            RewiredRumble.OneShot(ReInput.players.GetPlayer(0), RewiredRumble.MotorSide.Both, .2f, .5f, Ease.InBounce);
+        }
     }
 
     private bool PixelHitTest(SpriteRenderer sr, Rect overlapRect)
