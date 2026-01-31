@@ -63,15 +63,16 @@ namespace Player
         #region Camera Control
         [FoldoutGroup("Camera Control")] [SerializeReference] private Transform rootTransform;
         [FoldoutGroup("Camera Control")] [SerializeReference] private Transform headTransform;
+        [FoldoutGroup("Camera Control")] [SerializeField] private Vector3 headLocalPosition;
 
-        [FoldoutGroup("Camera Control")] [SerializeField]
-        private float bodyRotateSpeed = 40;
+        [FoldoutGroup("Camera Control")] [SerializeField] private float bodyRotateSpeed = 40;
         
-        [FoldoutGroup("Camera Control")] [SerializeField]
-        private float headRotateSpeed = 20;
+        [FoldoutGroup("Camera Control")] [SerializeField] private float headRotateSpeed = 20;
 
-        [FoldoutGroup("Camera Control")] [SerializeField]
-        private Vector2 headPitchAngle = new(-20, 20);
+        [FoldoutGroup("Camera Control")] [SerializeField] private Vector2 headPitchAngle = new(-20, 20);
+        
+        [FoldoutGroup("Camera Control")] [SerializeField] private float breatheAmplitude = 0.1f;
+        [FoldoutGroup("Camera Control")] [SerializeField] private float breathePeriod = 1f;
         
         private void UpdateBodyAndHead(float deltaTime)
         {
@@ -91,6 +92,12 @@ namespace Player
             curPitch = Mathf.Clamp(curPitch, headPitchAngle.x, headPitchAngle.y);
             
             headTransform.localRotation = Quaternion.Euler(curPitch, 0, 0);
+            
+            //Head Breath
+            var headBreatheSampling = Time.time % breathePeriod / breathePeriod;
+            var amplitude = Mathf.Sin(2 * Mathf.PI * headBreatheSampling);
+            amplitude *= breatheAmplitude;
+            headTransform.localPosition = headLocalPosition + new Vector3(0, amplitude, 0);
         }
         
         #endregion

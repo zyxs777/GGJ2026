@@ -1,4 +1,5 @@
 using Global;
+using Rewired;
 using Sirenix.OdinInspector;
 using STool;
 using STool.CollectionUtility;
@@ -42,18 +43,28 @@ namespace Player
         {
             DoImpulseDecline();
             DealVelocity();
+
+            _jumpCurrent -= _jumpCurrent < 0 ? GlobalShare.GlobalTimeDelta : 0;
+
+            rushCounter.Use(GlobalShare.GlobalTimeDelta);
         }
 
         #region Collision
-        
+        private readonly ContactPoint[] _contacts = new ContactPoint[32];
+        private int _contactCnt;
         private void OnCollisionStay(Collision other)
         {
-            var contacts = other.contacts;
-            for (var index = 0; index < contacts.Length; index++)
+            var contactImp = Vector3.zero;
+            _contactCnt = Mathf.Min(_contacts.Length, other.GetContacts(_contacts));
+            
+            for (var index = 0; index < _contactCnt; index++)
             {
-                var contact = contacts[index];
-                _impulseVelocity += contact.impulse;
+                var contact = _contacts[index];
+                contactImp += contact.impulse;
             }
+
+            _jumpCurrent = contactImp.y > 0 ? jumpRefresh : _jumpCurrent;
+            _impulseVelocity += contactImp;
         }
 
         #endregion
@@ -64,12 +75,15 @@ namespace Player
         private void RegisterCtrl()
         {
             _player ??= Rewired.ReInput.players.GetPlayer(playerIndex);
-            // player.AddInputEventDelegate();
+            _player.AddInputEventDelegate(DoJump, UpdateLoopType.Update, InputActionEventType.ButtonJustPressed, "Jump");
+            _player.AddInputEventDelegate(DoRush, UpdateLoopType.Update, InputActionEventType.ButtonJustPressed, "Rush");
         }
 
         private void UnRegisterCtrl()
         {
-            _player ??= Rewired.ReInput.players.GetPlayer(playerIndex);
+            if (!ReInput.isReady) return;
+            _player.RemoveInputEventDelegate(DoJump, UpdateLoopType.Update, InputActionEventType.ButtonJustPressed, "Jump");
+            _player.RemoveInputEventDelegate(DoRush, UpdateLoopType.Update, InputActionEventType.ButtonJustPressed, "Rush");
         }
 
         #endregion
@@ -78,7 +92,6 @@ namespace Player
         [FoldoutGroup("Motion")] [SerializeField] private float inputAcceleration = 10;
         [FoldoutGroup("Motion")] [SerializeField] private float inputSpeedMaximum = 5;
         [FoldoutGroup("Motion")] [SerializeField] private float impulseDeclineValue = 5;
-        [FoldoutGroup("Motion")] [SerializeField] private float jumpVelocity = 10;
 
         [FoldoutGroup("Motion")] [SerializeField]
         private Vector3 gravityAcceleration = new(0, -10, 0);
@@ -140,6 +153,44 @@ namespace Player
             // velOfRig.x =  outputXZ.x;
             // velOfRig.z = outputXZ.z;
             // rig.velocity = velOfRig;
+        }
+        #endregion
+
+        #region Jump
+        [FoldoutGroup("Jump")] [SerializeField] private float jumpVelocity = 10;
+        [FoldoutGroup("Jump")] [SerializeField] private float jumpRefresh = .2f;
+        [FoldoutGroup("Jump")] [ShowInInspector] [ReadOnly] private float _jumpCurrent;
+        private void DoJump(InputActionEventData data)
+        {
+            if (_jumpCurrent < 0) return;
+            _jumpCurrent = -1;
+
+            var jumpImp = Vector3.up;
+            var contactNormal = Vector3.zero;
+            for (var i = 0; i < _contactCnt; i++)
+            {
+                var contact = _contacts[i];
+                contactNormal += contact.normal;
+            }
+            jumpImp = (jumpImp + contactNormal.normalized + .5f * _velocityInput.ConvertXZ().normalized).normalized;
+            
+            //Jump Set
+            rig.transform.position += new Vector3(0, .1f, 0);
+            _impulseVelocity += jumpVelocity * jumpImp;
+        }
+        #endregion
+        
+        #region Rush
+        [FoldoutGroup("Rush")] [SerializeField] private float rushVelocity = 10;
+
+        [FoldoutGroup("Rush")] [SerializeReference] [HideReferenceObjectPicker]
+        private ConsumeCounterFloat rushCounter = new() { refreshTo = 2 };
+        private void DoRush(InputActionEventData data)
+        {
+            if(!rushCounter.CanUse())return;
+            rushCounter.Refresh();
+
+            _impulseVelocity += _velocityInput.ConvertXZ().normalized * rushVelocity;
         }
         #endregion
     }
