@@ -25,6 +25,8 @@ namespace Global
             GlobalShare.EventBus.Subscribe(_globalPauseCallback);
             GlobalShare.EventBus.Subscribe(_globalResumeCallback);
             
+            GlobalShare.MainCamera = Camera.main;
+            
             //临时处理
             Tween.Delay(.1f, () => { GlobalShare.EventBus.Publish(new Global_ExitLevel()); });
         }
