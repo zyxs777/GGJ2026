@@ -39,10 +39,10 @@ public class EnemySimpleAI : MonoBehaviour
         // ✅ 出生位置：只随机 X，Z 在远处
         Vector3 p = transform.position;
         p.x = Random.Range(-_xOffsetRange, _xOffsetRange);
-        p.y = Random.Range(-_yOffsetRange, _yOffsetRange);
+        // p.y = Random.Range(-_yOffsetRange, _yOffsetRange);
         p.z = _startZ;
         _offset = new Vector3(p.x, p.y,0);
-        transform.position = p;
+        // transform.position = p;
         ScheduleNextAttack();
     }
 
@@ -86,7 +86,8 @@ public class EnemySimpleAI : MonoBehaviour
             {
                 HitScreenPos = screenPos,
                 Strength01 = strength,
-                BaseHit = attackDamage
+                BaseHit = attackDamage,
+                AttackerPos = transform.position
             });
         
         _indicator?.ShowAtWorldPos(transform.position,_cam);
