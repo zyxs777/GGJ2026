@@ -6,7 +6,8 @@ public class PlayerHelmetSlashAttack : MonoBehaviour
     [SerializeField] private Camera _worldCam;
     [SerializeField] private Canvas _uiCanvas;
     [SerializeField] private RectTransform _slitRect;
-
+    [SerializeReference] private Transform playerRoot;
+    
     [Header("Attack")]
     [SerializeField] private float _damage = 1f;
     [SerializeField] private float _attackCooldown = 0.25f;
@@ -98,7 +99,8 @@ public class PlayerHelmetSlashAttack : MonoBehaviour
             var dmg = sr.GetComponentInParent<IDamageable>();
             if (dmg != null)
             {
-                dmg.TakeDamage(_damage);
+                dmg.TakeDamage(new IDamageable.DamagePack() 
+                    { Damage = _damage, AttackerPos = playerRoot.position });
                 Debug.Log($"<color=green>[HIT]</color> {sr.GetComponentInParent<EnemyInfo>()?.EnemyName ?? sr.name} z={zDist:F2}");
                 hitCount++;
             }
