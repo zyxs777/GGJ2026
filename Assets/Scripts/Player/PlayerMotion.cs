@@ -1,5 +1,6 @@
 using Global;
 using Rewired;
+using Scene;
 using Sirenix.OdinInspector;
 using STool;
 using STool.CollectionUtility;
@@ -8,6 +9,7 @@ using UnityEngine;
 namespace Player
 {
     public sealed class PlayerMotion : MonoBehaviour
+        , IPhyMotion
     {
         #region Player Setting
 
@@ -60,9 +62,11 @@ namespace Player
             for (var index = 0; index < _contactCnt; index++)
             {
                 var contact = _contacts[index];
-                contactImp += contact.impulse;
+                if (Vector3.Dot(contact.normal, contact.impulse) > 0)
+                {
+                    contactImp += contact.impulse;
+                }
             }
-
             _jumpCurrent = contactImp.y > 0 ? jumpRefresh : _jumpCurrent;
             _impulseVelocity += contactImp;
         }
@@ -147,12 +151,6 @@ namespace Player
             var output = _motionCalculation.Value;
          
             rig.velocity = output;
-            // var outputXZ = new Vector3(output.x, 0, output.z);
-            // var velOfRig = rig.velocity;
-            
-            // velOfRig.x =  outputXZ.x;
-            // velOfRig.z = outputXZ.z;
-            // rig.velocity = velOfRig;
         }
         #endregion
 
@@ -192,6 +190,14 @@ namespace Player
 
             _impulseVelocity += _velocityInput.ConvertXZ().normalized * rushVelocity;
         }
+        #endregion
+
+        #region IPhyMotion
+        public void AddImpulse(Vector3 impulse)
+        {
+            _impulseVelocity += impulse;
+        }
+
         #endregion
     }
 }
