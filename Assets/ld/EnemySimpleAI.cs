@@ -26,6 +26,8 @@ public class EnemySimpleAI : MonoBehaviour
     {
         if (_cam == null) _cam = Camera.main;
         if (_helmet == null) _helmet = FindObjectOfType<HelmetHitTiltPersistentShake>();
+        if (_worldCam == null) _worldCam = Camera.main;
+        if (_indicator == null) _indicator = FindObjectOfType<HelmetAttackIndicator>();
 
         // ✅ 出生位置：只随机 X，Z 在远处
         Vector3 p = transform.position;
