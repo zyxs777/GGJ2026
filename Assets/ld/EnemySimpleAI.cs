@@ -1,3 +1,4 @@
+using Player;
 using UnityEngine;
 
 public class EnemySimpleAI : MonoBehaviour
@@ -25,6 +26,8 @@ public class EnemySimpleAI : MonoBehaviour
     private float _nextAttackTime;
     private Camera _worldCam;
     private HelmetAttackIndicator _indicator;
+    Transform _target;
+    private Vector3 _offset;
 
     private void Awake()
     {
@@ -38,24 +41,32 @@ public class EnemySimpleAI : MonoBehaviour
         p.x = Random.Range(-_xOffsetRange, _xOffsetRange);
         p.y = Random.Range(-_yOffsetRange, _yOffsetRange);
         p.z = _startZ;
+        _offset = new Vector3(p.x, p.y,0);
         transform.position = p;
-
         ScheduleNextAttack();
     }
 
     private void Update()
     {
-        Vector3 p = transform.position;
-
-        // 1️⃣ 沿 Z 轴向玩家靠近
-        if (p.z > _stopZ)
+        if (!_target)
         {
-            p.z -= _moveSpeed * Time.deltaTime;
+            _target = FindFirstObjectByType<PlayerMotion>().transform;
+        }
+        
+        Vector3 p = transform.position;
+       
+
+        var distance = Vector3.Distance(p, _target.position+_offset);
+        var direction = (_target.position + _offset - p).normalized;
+        // 1️⃣ 沿 Z 轴向玩家靠近
+        if (distance > _stopZ)
+        {
+            p+=direction*_moveSpeed*Time.deltaTime;
             transform.position = p;
         }
 
         // 2️⃣ 到攻击区间后随机攻击
-        if (p.z <= _attackZ && Time.time >= _nextAttackTime)
+        if (distance <= _attackZ && Time.time >= _nextAttackTime)
         {
             DoAttack();
             ScheduleNextAttack();
