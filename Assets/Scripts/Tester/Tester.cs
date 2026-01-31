@@ -8,11 +8,14 @@ namespace Tester
 {
     public sealed class Tester : MonoBehaviour
     {
+        public SpriteRenderer spriteRenderer;
         private void Update()
         {
             if (Input.anyKeyDown)
-                RewiredRumble.OneShot(ReInput.players.GetPlayer(0), RewiredRumble.MotorSide.Left, 1, 5,
-                    Ease.InOutCubic);
+            {
+                Tween.Color(spriteRenderer, Color.red, Color.white, .3f, Ease.InBounce);
+            }
+                
         }
     }
 }
