@@ -1,5 +1,7 @@
+using System;
 using Global;
 using Player;
+using Rewired;
 using Sirenix.OdinInspector;
 using STool;
 using UnityEngine;
@@ -43,13 +45,26 @@ public class PlayerHelmetSlashAttack : MonoBehaviour
     
     [Header("Debug")]
     [SerializeField] private bool _logMiss = false;
-
+    private Rewired.Player _player;
     private float _nextAttackTime;
 
     private void Awake()
     {
         if (_worldCam == null) _worldCam = Camera.main;
         if (_uiCanvas == null) _uiCanvas = FindObjectOfType<Canvas>();
+
+        _player = ReInput.players.GetPlayer(0);
+        _player.AddInputEventDelegate((data => { SlashOnce(); }), UpdateLoopType.Update,
+            InputActionEventType.ButtonJustPressed, "Attack");
+    }
+
+    private void OnDestroy()
+    {
+        if (_player != null && ReInput.isReady)
+        {
+            _player.RemoveInputEventDelegate((data => { SlashOnce(); }), UpdateLoopType.Update,
+                InputActionEventType.ButtonJustPressed, "Attack");
+        }
     }
 
     private void Update()
@@ -61,15 +76,11 @@ public class PlayerHelmetSlashAttack : MonoBehaviour
         }
         foreach (var bar in attackConsumeBar) bar.fillAmount = attackConsume.GetPercent();
         
-        if (Input.GetMouseButtonDown(0) && Time.time >= _nextAttackTime)
-        {
-            _nextAttackTime = Time.time + _attackCooldown;
-            SlashOnce();
-        }
     }
 
     private void SlashOnce()
     {
+        if (Time.time < _nextAttackTime) return;
         if (_worldCam == null || _uiCanvas == null || _slitRect == null) { Debug.LogWarning("[SLASH] Missing refs: worldCam/uiCanvas/slitRect"); return; }
 
         Rect slitScreenRect = GetRectTransformScreenRect(_slitRect, GetUICamera());
@@ -129,6 +140,8 @@ public class PlayerHelmetSlashAttack : MonoBehaviour
             {
                 Debug.LogWarning($"[SLASH] Overlap+PixelHit but NO IDamageable on {sr.name}");
             }
+            
+            _nextAttackTime = Time.time + _attackCooldown;
         }
 
         if (hitCount == 0)

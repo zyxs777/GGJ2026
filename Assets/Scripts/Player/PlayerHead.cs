@@ -28,10 +28,10 @@ namespace Player
         }
 
         #region Update
-
+        [SerializeField] private float rotationSpeed = 4;
         private void Update()
         {
-            _rightInput = _player.GetAxis2D("moveX-r", "moveY-r");
+            _rightInput = rotationSpeed * _player.GetAxis2D("moveX-r", "moveY-r").normalized;
             UpdateBodyAndHead(GlobalShare.GlobalTime.Value * Time.deltaTime);
         }
 
