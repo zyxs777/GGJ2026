@@ -52,7 +52,11 @@ namespace Global
         {
             if (director.state == PlayState.Playing) return;
             if (_enemyPool.Count > 0) return;
-            GlobalShare.EventBus.Publish(new Global_ExitLevel());
+
+            GlobalShare.EventBus.Publish(new GlobalLerpUI.UIEvtLerp()
+            {
+                OnLerpMiddle = () => GlobalShare.EventBus.Publish(new Global_ExitLevel())
+            });
         }
         
         [ShowInInspector] private HashSet<GameObject> _enemyPool = new();
