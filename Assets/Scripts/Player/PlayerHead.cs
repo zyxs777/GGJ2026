@@ -2,6 +2,7 @@ using System;
 using Global;
 using Rewired;
 using Sirenix.OdinInspector;
+using STool;
 using UnityEngine;
 
 namespace Player
@@ -15,7 +16,7 @@ namespace Player
         #endregion
         
         #region Mono
-
+        
         private void OnEnable()
         {
             DoRewired();   
@@ -31,7 +32,7 @@ namespace Player
         private void Update()
         {
             _rightInput = _player.GetAxis2D("moveX-r", "moveY-r");
-            UpdateBodyAndHead(Time.deltaTime);
+            UpdateBodyAndHead(GlobalShare.GlobalTime.Value * Time.deltaTime);
         }
 
         private void FixedUpdate()
@@ -73,6 +74,7 @@ namespace Player
         
         [FoldoutGroup("Camera Control")] [SerializeField] private float breatheAmplitude = 0.1f;
         [FoldoutGroup("Camera Control")] [SerializeField] private float breathePeriod = 1f;
+        private float _loopCounter;
         
         private void UpdateBodyAndHead(float deltaTime)
         {
@@ -94,7 +96,9 @@ namespace Player
             headTransform.localRotation = Quaternion.Euler(curPitch, 0, 0);
             
             //Head Breath
-            var headBreatheSampling = Time.time % breathePeriod / breathePeriod;
+            _loopCounter += deltaTime;
+            _loopCounter %= breathePeriod;
+            var headBreatheSampling = _loopCounter / breathePeriod;
             var amplitude = Mathf.Sin(2 * Mathf.PI * headBreatheSampling);
             amplitude *= breatheAmplitude;
             headTransform.localPosition = headLocalPosition + new Vector3(0, amplitude, 0);

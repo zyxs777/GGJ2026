@@ -23,6 +23,7 @@ namespace Global
         {
             GlobalTime.Clear();
             GlobalTime.OnValueChanged = OnGlobalTimeChange;
+            GlobalTimeDelta = Time.fixedDeltaTime;
             GlobalTime.Recompute();
             
             EventBus.Reset();

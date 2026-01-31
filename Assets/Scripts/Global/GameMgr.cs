@@ -1,4 +1,6 @@
 using System;
+using PrimeTween;
+using STool.CollectionUtility;
 using UnityEngine;
 
 namespace Global
@@ -16,8 +18,15 @@ namespace Global
         private void Awake()
         {
             Physics.simulationMode = SimulationMode.Script;
-            GlobalShare.GlobalTime.OnValueChanged = OnTimeScaled;
-            _timeDelta = Time.fixedDeltaTime;
+
+            _globalPause = GlobalShare.GlobalTime.Add(1, (f, f1) => f * f1);
+            _globalPauseCallback ??= GlobalPause;
+            _globalResumeCallback ??= GlobalResume;
+            GlobalShare.EventBus.Subscribe(_globalPauseCallback);
+            GlobalShare.EventBus.Subscribe(_globalResumeCallback);
+            
+            //临时处理
+            Tween.Delay(.1f, () => { GlobalShare.EventBus.Publish(new Global_ExitLevel()); });
         }
         private void FixedUpdate()
         {
@@ -25,16 +34,32 @@ namespace Global
         }
 
         #region Time Management
-        private float _timeDelta;
-        private void OnTimeScaled(float scale)
-        {
-            _timeDelta = Time.fixedDeltaTime * scale;
-        }
 
+        #region Time Scale
         private void UpdateTime()
         {
-            Physics.Simulate(_timeDelta);
+            if (GlobalShare.GlobalTimeDelta > 0)
+                Physics.Simulate(GlobalShare.GlobalTimeDelta);
         }
+        #endregion
+
+        #region Time Pause
+
+        private DecoratedValue<float>.ModifierCollectionToken _globalPause;
+        private Action<Global_GamePause> _globalPauseCallback;
+        private Action<Global_GameResume> _globalResumeCallback;
+
+        private void GlobalPause(Global_GamePause evt)
+        {
+            _globalPause.SetValue(0);
+        }
+
+        private void GlobalResume(Global_GameResume evt)
+        {
+            _globalPause.SetValue(1);
+        }
+        #endregion
+
         #endregion
     }
 }

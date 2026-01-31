@@ -67,7 +67,6 @@ namespace STool.CollectionUtility
                 waitList.Enqueue(item);
             }
             onUseList.Clear();
-            Debug.Log($"All Clear from Use:{onUseList.Count} => Pool:{waitList.Count}");
         }
         /// <summary>
         /// 按指定条件将活跃对象推入池
