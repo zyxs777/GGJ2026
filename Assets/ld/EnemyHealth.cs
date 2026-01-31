@@ -1,4 +1,8 @@
+using System;
 using PrimeTween;
+using Scene;
+using Sirenix.OdinInspector;
+using Sirenix.Serialization;
 using STool;
 using UnityEngine;
 
@@ -13,14 +17,15 @@ public interface IDamageable
     }
 }
 
-public class EnemyHealth : MonoBehaviour, IDamageable
+public class EnemyHealth : SerializedMonoBehaviour, IDamageable
 {
     [SerializeReference] private SpriteRenderer spriteRenderer;
     [SerializeField] private float _hp = 3f;
     [SerializeField] private float hitDistance = 1f;
-    private Tween _colorTween;
-    private Tween _motionTween;
-    private Tween _deadTween;
+    [NonSerialized] private Tween _colorTween;
+    [NonSerialized] private Tween _motionTween;
+    [NonSerialized] private Tween _deadTween;
+    [OdinSerialize] private IPhyMotion _phyMotion;
     public void TakeDamage(IDamageable.DamagePack dmg)
     {
         if (_deadTween.isAlive) return;
@@ -31,8 +36,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         _colorTween.Complete();
         _colorTween = Tween.Color(spriteRenderer, Color.red, spriteRenderer.color, .3f, Ease.InBounce);
         
-        _motionTween.Stop();
-        _motionTween = Tween.Position(transform, transform.position + hitImpact.normalized * hitDistance, 1, Ease.OutCubic);
+        _phyMotion.AddImpulse(hitImpact.normalized * hitDistance);
         
         if (_hp <= 0f)
         {

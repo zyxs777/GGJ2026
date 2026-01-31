@@ -23,6 +23,9 @@ namespace Global
 
             _onLevelEnd ??= OnDirectorEnd;
             director.stopped += _onLevelEnd;
+            
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
 
         private void OnDisable()

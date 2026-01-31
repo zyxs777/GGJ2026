@@ -53,7 +53,7 @@ MonoBehaviour:
   - prefab: {fileID: 3772901199543519452, guid: 0e046bb174dc5f84da415dbd546a2f2a,
       type: 3}
     name: "\u5173\u5361-0"
-  - prefab: {fileID: 3772901199543519452, guid: 0e046bb174dc5f84da415dbd546a2f2a,
+  - prefab: {fileID: 3772901199543519452, guid: ff60b5e38944d7a4db6b24b504341a66,
       type: 3}
     name: "\u5173\u5361-1"
   - prefab: {fileID: 3772901199543519452, guid: 0e046bb174dc5f84da415dbd546a2f2a,

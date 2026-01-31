@@ -49,8 +49,6 @@ namespace Player
         private Rewired.Player _player;
         private void DoRewired()
         {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
             _player = ReInput.players?.GetPlayer(playerIndex);
         }
 

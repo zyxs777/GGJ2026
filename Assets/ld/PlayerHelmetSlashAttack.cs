@@ -1,4 +1,5 @@
 using Global;
+using Player;
 using Sirenix.OdinInspector;
 using STool;
 using UnityEngine;
@@ -33,9 +34,12 @@ public class PlayerHelmetSlashAttack : MonoBehaviour
 
     [Header("攻击冷却和精力")] [SerializeReference] [HideReferenceObjectPicker]
     private RangeCounterFloat attackConsume = new() { limit = new Vector2(0, 15) };
+    [Header("攻击冷却和精力")] [SerializeReference] [HideReferenceObjectPicker]
+    private ConsumeCounterFloat attackCD = new() { refreshTo = 1};
     [SerializeField] private float attackConsumeRecover = 5;
     [SerializeField] private float attackCost = 5;
     [SerializeReference] private Image[] attackConsumeBar;
+    
     
     [Header("Debug")]
     [SerializeField] private bool _logMiss = false;
@@ -50,7 +54,11 @@ public class PlayerHelmetSlashAttack : MonoBehaviour
 
     private void Update()
     {
-        attackConsume.Value += attackConsumeRecover * GlobalShare.GlobalTime.Value * Time.deltaTime;
+        var deltaTime = GlobalShare.GlobalTime.Value * Time.deltaTime;
+        if(attackCD.Use(deltaTime))
+        {
+            attackConsume.Value += attackConsumeRecover * deltaTime;
+        }
         foreach (var bar in attackConsumeBar) bar.fillAmount = attackConsume.GetPercent();
         
         if (Input.GetMouseButtonDown(0) && Time.time >= _nextAttackTime)
@@ -70,8 +78,11 @@ public class PlayerHelmetSlashAttack : MonoBehaviour
 
         int hitCount = 0;
 
-        if (attackConsume.Value < attackCost) return;
+        if (attackConsume.Value < attackCost || !attackCD.CanUse()) return;
         attackConsume.Value -= attackCost;
+        attackCD.Refresh();        
+        
+        GlobalShare.EventBus.Publish(new PlayerSlashAnima.PlayerAnimaSlash());
         
         foreach (var sr in srs)
         {
@@ -110,8 +121,7 @@ public class PlayerHelmetSlashAttack : MonoBehaviour
             var dmg = sr.GetComponentInParent<IDamageable>();
             if (dmg != null)
             {
-                dmg.TakeDamage(new IDamageable.DamagePack() 
-                    { Damage = _damage, AttackerPos = playerRoot.position });
+                dmg.TakeDamage(new IDamageable.DamagePack() { Damage = _damage, AttackerPos = playerRoot.position });
                 Debug.Log($"<color=green>[HIT]</color> {sr.GetComponentInParent<EnemyInfo>()?.EnemyName ?? sr.name} z={zDist:F2}");
                 hitCount++;
             }

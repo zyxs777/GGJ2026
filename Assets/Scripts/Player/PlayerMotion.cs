@@ -97,8 +97,7 @@ namespace Player
         [FoldoutGroup("Motion")] [SerializeField] private float inputSpeedMaximum = 5;
         [FoldoutGroup("Motion")] [SerializeField] private float impulseDeclineValue = 5;
 
-        [FoldoutGroup("Motion")] [SerializeField]
-        private Vector3 gravityAcceleration = new(0, -10, 0);
+        [FoldoutGroup("Motion")] [SerializeField] private Vector3 gravityAcceleration = new(0, -10, 0);
         
         
         private DecoratedValue<Vector3> _motionCalculation;

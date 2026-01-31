@@ -18,8 +18,8 @@ public class HelmetFollowMouse : MonoBehaviour
         if (_helmetRoot == null) _helmetRoot = GetComponent<RectTransform>();
         if (_canvas == null) _canvas = GetComponentInParent<Canvas>();
 
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        // Cursor.lockState = CursorLockMode.None;
+        // Cursor.visible = true;
     }
 
     private void Update()
