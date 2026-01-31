@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using PrimeTween;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Playables;
@@ -53,10 +54,11 @@ namespace Global
             if (director.state == PlayState.Playing) return;
             if (_enemyPool.Count > 0) return;
 
+            Tween.Delay(2,()=>
             GlobalShare.EventBus.Publish(new GlobalLerpUI.UIEvtLerp()
             {
                 OnLerpMiddle = () => GlobalShare.EventBus.Publish(new Global_ExitLevel())
-            });
+            }));
         }
         
         [ShowInInspector] private HashSet<GameObject> _enemyPool = new();
