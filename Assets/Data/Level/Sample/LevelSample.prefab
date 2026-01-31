@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4825562018926436194}
-  - component: {fileID: 1152689002090019969}
   - component: {fileID: 2112148288430695423}
   - component: {fileID: 3900149928674612507}
   m_Layer: 0
@@ -38,70 +37,6 @@ Transform:
   - {fileID: 6484579577101711757}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1152689002090019969
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3772901199543519452}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10a0f975c24b9a44a869deb95e56668d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 11400000, guid: 9d3e7487f264a624aaa6ffe97dfdfeee, type: 2}
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: _timeSource
-      Entry: 10
-      Data: 0
-    - Name: _updaters
-      Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[STool.SInterfaces.ITimeUpdater,
-        SInterfaces]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: _scalers
-      Entry: 7
-      Data: 1|System.Collections.Generic.List`1[[STool.SInterfaces.ITimeScaler, SInterfaces]],
-        mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: _activators
-      Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[STool.SInterfaces.IActivator, SInterfaces]],
-        mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
 --- !u!114 &2112148288430695423
 MonoBehaviour:
   m_ObjectHideFlags: 0

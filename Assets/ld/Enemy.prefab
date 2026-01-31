@@ -128,8 +128,8 @@ GameObject:
   - component: {fileID: 1762537351514847687}
   - component: {fileID: 5535088169569153393}
   - component: {fileID: 6788509498139274745}
+  - component: {fileID: 8575371252925402338}
   - component: {fileID: 5062669481330993087}
-  - component: {fileID: 7122801065906113215}
   - component: {fileID: 1123305155181152511}
   - component: {fileID: 5145277032380579197}
   - component: {fileID: 8188489992896794858}
@@ -150,8 +150,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.66, y: 0.66, z: 0.66}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6127508420770100542}
   m_Father: {fileID: 0}
@@ -195,6 +195,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5df77dd928bbb4143a53545b55dc28fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8575371252925402338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7456536819291222961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4650f1ec8383e2408d81821d7b21109, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackZMin: 0
+  _attackZMax: 4
+  _inRangeColor: {r: 0.84163314, g: 1, b: 0.8254717, a: 1}
+  _flashSpeed: 0
+  _lerpSpeed: 18
 --- !u!114 &5062669481330993087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,27 +233,8 @@ MonoBehaviour:
   _xOffsetRange: 3
   _attackInterval: {x: 0.6, y: 1.4}
   _attackStrength: {x: 0.6, y: 1}
---- !u!65 &7122801065906113215
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7456536819291222961}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Size: {x: 3, y: 3, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  _indicator: {fileID: 0}
+  _worldCam: {fileID: 0}
 --- !u!320 &1123305155181152511
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -325,7 +323,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0e015ecd147972c41b1faf4690c53167, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a611c6d3d337d6b45997ea33da86d70e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

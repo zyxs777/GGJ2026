@@ -13,8 +13,7 @@ namespace Scene
 
         public void GenerateEnemy()
         {
-            var enemy = Instantiate(enemyPrefab, transform);
-            enemy.transform.SetPositionAndRotation(transform.position, transform.rotation);
+            var enemy = Instantiate(enemyPrefab, transform.position,Quaternion.identity);
         }
         
         #region Editor
