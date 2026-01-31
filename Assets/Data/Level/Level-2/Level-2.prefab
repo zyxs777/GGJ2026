@@ -827,7 +827,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4497398004327652920
 Transform:
   m_ObjectHideFlags: 0
@@ -938,7 +938,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5678010754310809778
 Transform:
   m_ObjectHideFlags: 0
@@ -996,7 +996,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5088f7a68fa309e4da577e2c64af0937, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 7456536819291222961, guid: 8571509489902824f89b1ad40ec3972e,
+  enemyPrefab: {fileID: 7456536819291222961, guid: eb80301829c6daf429aca91ef3297dbc,
     type: 3}
   signalReceiver: {fileID: 7618352802480859938}
   editorColor: {r: 1, g: 0, b: 0, a: 1}

@@ -150,6 +150,11 @@ namespace ld
                 DoAttack();
                 ScheduleNextAttack();
             }
+
+            if (_inFlyHigh)
+            {
+                transform.localPosition = new Vector3(transform.localPosition.x, Random.Range(flyHighMin, flyHighMax), 0);
+            }
         }
 
         private void DoAttack()
@@ -177,6 +182,18 @@ namespace ld
         private void ScheduleNextAttack()
         {
             _nextAttackTime = Time.time + Random.Range(_attackInterval.x, _attackInterval.y);
+        }
+
+        private bool _inFlyHigh;
+        public float flyHighMin,flyHighMax;
+        private void FlyHigh()
+        {
+            _inFlyHigh = true;
+        }
+        
+        private void FlyHighEnd()
+        {
+            _inFlyHigh = false;
         }
     }
 }
