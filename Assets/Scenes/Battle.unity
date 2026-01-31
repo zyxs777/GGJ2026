@@ -130,6 +130,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2182141468244817597, guid: 5812bb02d72e7064f826d4b1737eb0b6,
+        type: 3}
+      propertyPath: _userData.players.Array.data[1]._defaultJoystickMaps.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2182141468244817597, guid: 5812bb02d72e7064f826d4b1737eb0b6,
+        type: 3}
+      propertyPath: _userData.players.Array.data[1]._defaultJoystickMaps.Array.data[1]._enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4770967037622018509, guid: 5812bb02d72e7064f826d4b1737eb0b6,
         type: 3}
       propertyPath: m_Name

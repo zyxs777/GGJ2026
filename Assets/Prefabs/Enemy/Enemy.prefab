@@ -223,15 +223,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 0
-    SerializedBytes: 0b010a0000005f007000680079004d006f00740069006f006e0000000000
+    SerializedFormat: 2
+    SerializedBytes: 
     ReferencedUnityObjects:
     - {fileID: 5062669481330993087}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes: []
+    SerializationNodes:
+    - Name: _phyMotion
+      Entry: 10
+      Data: 0
   spriteRenderer: {fileID: 8188489992896794858}
   _hp: 3
   hitDistance: 6
@@ -274,7 +277,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _attackZMin: 0
   _attackZMax: 4
-  _inRangeColor: {r: 0.84163314, g: 1, b: 0.8254717, a: 1}
+  _inRangeColor: {r: 1, g: 0.98726404, b: 0.8235294, a: 1}
   _flashSpeed: 0
   _lerpSpeed: 18
 --- !u!114 &5062669481330993087
@@ -300,7 +303,7 @@ MonoBehaviour:
   _yOffsetRange: 0
   _attackInterval: {x: 0.6, y: 1.4}
   _attackStrength: {x: 0.6, y: 1}
-  attackDamage: 15
+  attackDamage: 8
   animator: {fileID: 5762899407516028317}
   attackAnima: Attack
   impulseDeclineValue: 5

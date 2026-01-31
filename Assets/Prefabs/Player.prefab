@@ -326,12 +326,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerIndex: 0
+  rotationSpeed: 8
   rootTransform: {fileID: 3632222491987843339}
   headTransform: {fileID: 8094200318042152887}
   headLocalPosition: {x: 0, y: 1.94, z: 0}
   bodyRotateSpeed: 13
   headRotateSpeed: 10
-  headPitchAngle: {x: -5, y: 9}
+  headPitchAngle: {x: -20, y: 20}
   breatheAmplitude: 0.01
   breathePeriod: 2
 --- !u!114 &3898346547185223359
