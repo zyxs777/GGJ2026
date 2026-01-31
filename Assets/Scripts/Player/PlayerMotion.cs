@@ -1,4 +1,3 @@
-using System;
 using Global;
 using Sirenix.OdinInspector;
 using STool;
@@ -46,11 +45,17 @@ namespace Player
         }
 
         #region Collision
-
-        private void OnCollisionEnter(Collision other)
+        
+        private void OnCollisionStay(Collision other)
         {
-            _impulseVelocity += other.impulse;
+            var contacts = other.contacts;
+            for (var index = 0; index < contacts.Length; index++)
+            {
+                var contact = contacts[index];
+                _impulseVelocity += contact.impulse;
+            }
         }
+
         #endregion
         #endregion
 
@@ -74,11 +79,15 @@ namespace Player
         [FoldoutGroup("Motion")] [SerializeField] private float inputSpeedMaximum = 5;
         [FoldoutGroup("Motion")] [SerializeField] private float impulseDeclineValue = 5;
         [FoldoutGroup("Motion")] [SerializeField] private float jumpVelocity = 10;
+
+        [FoldoutGroup("Motion")] [SerializeField]
+        private Vector3 gravityAcceleration = new(0, -10, 0);
+        
         
         private DecoratedValue<Vector3> _motionCalculation;
         private DecoratedValue<Vector3>.ModifierCollectionToken _inputToken;
         private DecoratedValue<Vector3>.ModifierCollectionToken _impulseToken;
-        private Vector3 _impulseVelocity;
+        [FoldoutGroup("Motion")] [ShowInInspector] [ReadOnly] private Vector3 _impulseVelocity;
         private Vector3 Vec3Add(Vector3 a, Vector3 b) => a + b;
         private void InitMotionDecorator()
         {
@@ -93,6 +102,9 @@ namespace Player
         private void GetInput()
         {
             _velocityInput = Vector2.ClampMagnitude(_player.GetAxis2D("moveX", "moveY"), 1);
+            var dirAngle = Vector3.SignedAngle(Vector3.forward, transform.forward, Vector3.up);
+            _velocityInput = _velocityInput.Rotate(dirAngle);
+            
             var velInputChange = _velocityInput - _velocityProactive;
             velInputChange = Vector2.ClampMagnitude(velInputChange, GlobalShare.GlobalTimeDelta);
             _velocityProactive += velInputChange;
@@ -105,10 +117,12 @@ namespace Player
         #region Impulse
         private void DoImpulseDecline()
         {
+            _impulseVelocity += GlobalShare.GlobalTimeDelta * gravityAcceleration;  //Gravity
+            
             var dir = _impulseVelocity.normalized;
-            var mag = Mathf.Max(0, dir.magnitude - impulseDeclineValue * GlobalShare.GlobalTimeDelta);
+            var mag = Mathf.Max(0, _impulseVelocity.magnitude - impulseDeclineValue * GlobalShare.GlobalTimeDelta);
             var impRes = mag * dir;
-
+            
             _impulseToken.SetValue(impRes, false);
             _impulseVelocity = impRes;
         }
