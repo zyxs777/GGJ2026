@@ -30,6 +30,11 @@ namespace Global
         }
 
 
+        #region Camera
+        public static Camera MainCamera;
+
+        #endregion
+        
         #region Cursor
 
         public static void CenterCursor()
