@@ -1,3 +1,5 @@
+using Global;
+using Player;
 using UnityEngine;
 
 public class HelmetHitTiltPersistentShake : MonoBehaviour
@@ -108,12 +110,16 @@ public class HelmetHitTiltPersistentShake : MonoBehaviour
         // 用同一个方向决定晃动方向（打右边 -> 往左甩一下）
         float impulse = (-side * _sideWeight + -vert * _verticalWeight) * (_shakeImpulse * strength01);
         _shakeVel += impulse;
+        
+        //发送受击特效
+        GlobalShare.EventBus.Publish(new HelmetHitEffect3D.HelmetHitEffectData(){AttackerPos = pack.AttackerPos});
     }
     public struct AttackPack
     {
         public Vector2 HitScreenPos;
         public float Strength01;
         public float BaseHit;
+        public Vector3 AttackerPos;
     }
 
     /// <summary>

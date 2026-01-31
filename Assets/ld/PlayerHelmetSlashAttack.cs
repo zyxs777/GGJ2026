@@ -1,4 +1,8 @@
+using Global;
+using Sirenix.OdinInspector;
+using STool;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHelmetSlashAttack : MonoBehaviour
 {
@@ -27,6 +31,12 @@ public class PlayerHelmetSlashAttack : MonoBehaviour
     [Tooltip("对重叠区域采样点数量：1=中心点；5=中心+四点（更准）")]
     [SerializeField] private int _sampleCount = 1;
 
+    [Header("攻击冷却和精力")] [SerializeReference] [HideReferenceObjectPicker]
+    private RangeCounterFloat attackConsume = new() { limit = new Vector2(0, 15) };
+    [SerializeField] private float attackConsumeRecover = 5;
+    [SerializeField] private float attackCost = 5;
+    [SerializeReference] private Image[] attackConsumeBar;
+    
     [Header("Debug")]
     [SerializeField] private bool _logMiss = false;
 
@@ -40,6 +50,9 @@ public class PlayerHelmetSlashAttack : MonoBehaviour
 
     private void Update()
     {
+        attackConsume.Value += attackConsumeRecover * GlobalShare.GlobalTime.Value * Time.deltaTime;
+        foreach (var bar in attackConsumeBar) bar.fillAmount = attackConsume.GetPercent();
+        
         if (Input.GetMouseButtonDown(0) && Time.time >= _nextAttackTime)
         {
             _nextAttackTime = Time.time + _attackCooldown;
@@ -49,19 +62,17 @@ public class PlayerHelmetSlashAttack : MonoBehaviour
 
     private void SlashOnce()
     {
-        if (_worldCam == null || _uiCanvas == null || _slitRect == null)
-        {
-            Debug.LogWarning("[SLASH] Missing refs: worldCam/uiCanvas/slitRect");
-            return;
-        }
+        if (_worldCam == null || _uiCanvas == null || _slitRect == null) { Debug.LogWarning("[SLASH] Missing refs: worldCam/uiCanvas/slitRect"); return; }
 
         Rect slitScreenRect = GetRectTransformScreenRect(_slitRect, GetUICamera());
-
         SpriteRenderer[] srs = FindObjectsOfType<SpriteRenderer>();
         Debug.Log($"[SLASH] click, SpriteRenderer in scene = {srs.Length}");
 
         int hitCount = 0;
 
+        if (attackConsume.Value < attackCost) return;
+        attackConsume.Value -= attackCost;
+        
         foreach (var sr in srs)
         {
             if (sr == null || !sr.enabled) continue;

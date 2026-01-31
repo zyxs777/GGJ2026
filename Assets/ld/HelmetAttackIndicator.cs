@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class HelmetAttackIndicator : MonoBehaviour
 {
-    [Header("Refs")]
+    [Header("Refs")] 
     [SerializeField] private Canvas _canvas;
     [SerializeField] private RectTransform _root;        // 标记挂载的UI根（建议 HelmMotionRot）
     [SerializeField] private RectTransform _helmetCenter; // 用来取“头盔中心”的参考（不填就用 _root）
