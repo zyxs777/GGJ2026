@@ -13,9 +13,9 @@ public class HelmetHitTiltPersistentShake : MonoBehaviour
     [Tooltip("持久化角度最大值（绝对值）")]
     [SerializeField] private float _maxBaseTiltDeg = 50f;
 
-    [Header("Persistent Tilt (Base)")]
-    [Tooltip("strength=1 的基础累积角度增量")]
-    [SerializeField] private float _baseTiltPerHitDeg = 6f;
+    // [Header("Persistent Tilt (Base)")]
+    // [Tooltip("strength=1 的基础累积角度增量")]
+    // [SerializeField] private float _baseTiltPerHitDeg = 6f;
 
     [SerializeField] private float _sideWeight = 1.0f;
     [SerializeField] private float _verticalWeight = 0.35f;
@@ -83,8 +83,12 @@ public class HelmetHitTiltPersistentShake : MonoBehaviour
     /// <summary>
     /// 命中点：屏幕坐标。strength01：0~1
     /// </summary>
-    public void ApplyHitScreenPos(Vector2 hitScreenPos, float strength01 = 1f)
+    public void ApplyHitScreenPos(AttackPack pack)
     {
+        var hitScreenPos = pack.HitScreenPos;
+        var strength01 = pack.Strength01;
+        var _baseTiltPerHitDeg = pack.BaseHit;
+            
         Vector2 center = GetCenterScreenPos();
         Vector2 dir = hitScreenPos - center;
         if (dir.sqrMagnitude < 0.0001f) dir = Vector2.right;
@@ -105,6 +109,12 @@ public class HelmetHitTiltPersistentShake : MonoBehaviour
         float impulse = (-side * _sideWeight + -vert * _verticalWeight) * (_shakeImpulse * strength01);
         _shakeVel += impulse;
     }
+    public struct AttackPack
+    {
+        public Vector2 HitScreenPos;
+        public float Strength01;
+        public float BaseHit;
+    }
 
     /// <summary>
     /// 命中点：世界坐标（碰撞点/攻击者位置），自动转屏幕坐标
@@ -115,7 +125,12 @@ public class HelmetHitTiltPersistentShake : MonoBehaviour
         if (cam == null) return;
 
         Vector2 sp = cam.WorldToScreenPoint(hitWorldPos);
-        ApplyHitScreenPos(sp, strength01);
+        ApplyHitScreenPos(new AttackPack()
+        {
+            HitScreenPos = sp,
+            Strength01 = strength01,
+            BaseHit = 6
+        });
     }
 
     public void SetBaseTilt(float tiltDeg)
