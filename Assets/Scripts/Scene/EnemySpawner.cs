@@ -14,6 +14,7 @@ namespace Scene
         public void GenerateEnemy()
         {
             var enemy = Instantiate(enemyPrefab, transform.position,Quaternion.identity);
+            enemy.transform.parent = transform;
         }
         
         #region Editor

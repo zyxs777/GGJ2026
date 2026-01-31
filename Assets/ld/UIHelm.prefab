@@ -56,7 +56,6 @@ MonoBehaviour:
   _centerRef: {fileID: 0}
   _failTiltDeg: 35
   _maxBaseTiltDeg: 50
-  _baseTiltPerHitDeg: 6
   _sideWeight: 1
   _verticalWeight: 0.35
   _autoRecoverDegPerSec: 0
@@ -191,8 +190,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -14.9011, y: 25.880981}
-  m_SizeDelta: {x: 932.8965, y: 189.4069}
+  m_AnchoredPosition: {x: -6.0785, y: 42.1046}
+  m_SizeDelta: {x: 1068.6489, y: 319.0809}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5583095989189731254
 CanvasRenderer:
@@ -436,12 +435,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canvas: {fileID: 0}
   _root: {fileID: 0}
+  _helmetCenter: {fileID: 1804020133073786745}
   _slitRect: {fileID: 0}
   _markerPrefab: {fileID: 421982449908741438, guid: c2c5bd2fc6e8943449a51124c90b038e,
     type: 3}
   _lifeTime: 0.5
   _scale: 1
   _clampToSlit: 1
+  _rotationOffsetDeg: 0
+  _pointFromCenterToHit: 1
 --- !u!114 &6774286057074166831
 MonoBehaviour:
   m_ObjectHideFlags: 0

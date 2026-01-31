@@ -15,6 +15,8 @@ public class EnemySimpleAI : MonoBehaviour
     [Header("X Offset")]
     [SerializeField] private float _xOffsetRange = 3.0f; // 左右随机范围
 
+    [Header("y Offset")]
+    [SerializeField] private float _yOffsetRange = 3.0f; // 左右随机范围
     [Header("Attack")]
     [SerializeField] private Vector2 _attackInterval = new Vector2(0.6f, 1.4f);
     [SerializeField] private Vector2 _attackStrength = new Vector2(0.6f, 1.0f);
@@ -34,6 +36,7 @@ public class EnemySimpleAI : MonoBehaviour
         // ✅ 出生位置：只随机 X，Z 在远处
         Vector3 p = transform.position;
         p.x = Random.Range(-_xOffsetRange, _xOffsetRange);
+        p.y = Random.Range(-_yOffsetRange, _yOffsetRange);
         p.z = _startZ;
         transform.position = p;
 
@@ -74,6 +77,8 @@ public class EnemySimpleAI : MonoBehaviour
                 Strength01 = strength,
                 BaseHit = attackDamage
             });
+        
+        _indicator?.ShowAtWorldPos(transform.position,_cam);
     }
 
     private void ScheduleNextAttack()

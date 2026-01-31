@@ -150,7 +150,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.66, y: 0.66, z: 0.66}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6127508420770100542}
@@ -170,6 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 8188489992896794858}
   _hp: 3
+  hitDistance: 1
 --- !u!114 &5535088169569153393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,11 +231,11 @@ MonoBehaviour:
   _startZ: 12
   _attackZ: 2
   _stopZ: 2
-  _xOffsetRange: 3
+  _xOffsetRange: 1.5
+  _yOffsetRange: 0.6
   _attackInterval: {x: 0.6, y: 1.4}
   _attackStrength: {x: 0.6, y: 1}
-  _indicator: {fileID: 0}
-  _worldCam: {fileID: 0}
+  attackDamage: 6
 --- !u!320 &1123305155181152511
 PlayableDirector:
   m_ObjectHideFlags: 0
