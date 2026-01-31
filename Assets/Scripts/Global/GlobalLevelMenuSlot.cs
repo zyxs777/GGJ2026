@@ -15,7 +15,11 @@ namespace Global
 
         public void StartLevel()
         {
-            Instantiate(prefab);
+            GlobalShare.EventBus.Publish(new GlobalLerpUI.UIEvtLerp()
+            {
+                OnLerpMiddle = () => { Instantiate(prefab); }
+            });
+            
         }
     }
 }
