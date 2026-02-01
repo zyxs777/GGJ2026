@@ -307,15 +307,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 0
-    SerializedBytes: 0b010a0000005f007000680079004d006f00740069006f006e0000000000
+    SerializedFormat: 2
+    SerializedBytes: 
     ReferencedUnityObjects:
     - {fileID: 5062669481330993087}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes: []
+    SerializationNodes:
+    - Name: _phyMotion
+      Entry: 10
+      Data: 0
   spriteRenderer: {fileID: 3488255342626272410}
   _hp: 3
   hitDistance: 6
@@ -344,6 +347,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5df77dd928bbb4143a53545b55dc28fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackSound:
+    Guid:
+      Data1: -1145534057
+      Data2: 1215439724
+      Data3: 509691321
+      Data4: -1485538538
+    Path: event:/EnemyDogAttack
 --- !u!114 &8575371252925402338
 MonoBehaviour:
   m_ObjectHideFlags: 0

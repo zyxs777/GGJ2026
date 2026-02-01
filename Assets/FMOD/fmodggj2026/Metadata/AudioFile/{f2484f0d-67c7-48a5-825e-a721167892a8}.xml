@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{f2484f0d-67c7-48a5-825e-a721167892a8}">
+		<property name="assetPath">
+			<value>哈基米.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>4.8848979591836734</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{df11f51c-2d85-46df-8219-60d110205b4d}</destination>
+		</relationship>
+	</object>
+</objects>

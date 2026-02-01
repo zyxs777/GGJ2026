@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{64dcdfed-9ccc-40ee-88e1-c72687645080}">
+		<property name="assetPath">
+			<value>科比小曲.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>22.0499992</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>114.15510204081633</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{df11f51c-2d85-46df-8219-60d110205b4d}</destination>
+		</relationship>
+	</object>
+</objects>

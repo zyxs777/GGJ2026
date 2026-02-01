@@ -92,6 +92,9 @@
 		<property name="length">
 			<value>0.5</value>
 		</property>
+		<property name="startOffset">
+			<value>25.5</value>
+		</property>
 		<relationship name="sounds">
 			<destination>{5dfe5a8a-5a9f-4469-9471-53645ef209a0}</destination>
 			<destination>{db5c2166-23dd-4f6a-bc1c-acb909e7960c}</destination>

@@ -17,6 +17,7 @@ namespace Global
         {
             GlobalShare.EventBus.Publish(new GlobalLerpUI.UIEvtLerp()
             {
+                EnterTime = 3,
                 OnLerpMiddle = () => { Instantiate(prefab); }
             });
             
