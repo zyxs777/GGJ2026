@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{a936ddff-1a41-4b43-a3e1-092788eace12}">
+		<property name="assetPath">
+			<value>C-受击3.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.8240000000000001</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{df11f51c-2d85-46df-8219-60d110205b4d}</destination>
+		</relationship>
+	</object>
+</objects>

@@ -1,5 +1,32 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7257348762008569024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/BreatheSlow
+  m_EditorClassIdentifier: 
+  Path: event:/BreatheSlow
+  Guid:
+    Data1: -668274054
+    Data2: 1329712333
+    Data3: -1404394076
+    Data4: 354598732
+  Banks:
+  - {fileID: -122271517182417535}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 41112
 --- !u!114 &-5863859956144911428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20,6 +47,33 @@ MonoBehaviour:
   - Name: Desktop
     Value: 724
   Exists: 1
+--- !u!114 &-566912826034320063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Attack
+  m_EditorClassIdentifier: 
+  Path: event:/Attack
+  Guid:
+    Data1: 286853714
+    Data2: 1229964655
+    Data3: -219984484
+    Data4: 1969378640
+  Banks:
+  - {fileID: -122271517182417535}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 520
 --- !u!114 &-122271517182417535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35,10 +89,10 @@ MonoBehaviour:
   Path: Assets/FMOD/fmodggj2026/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639053229117608897
+  lastModified: 639055372393629951
   FileSizes:
   - Name: Desktop
-    Value: 1074
+    Value: 1156160
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -55,15 +109,84 @@ MonoBehaviour:
   EditorBanks:
   - {fileID: 3026076633622694963}
   - {fileID: -122271517182417535}
-  EditorEvents: []
+  EditorEvents:
+  - {fileID: 782239800951033016}
+  - {fileID: -566912826034320063}
+  - {fileID: 6413463788378748337}
+  - {fileID: -7257348762008569024}
+  - {fileID: 1729677594092165266}
   EditorParameters: []
   MasterBanks:
   - {fileID: -122271517182417535}
   StringsBanks:
   - {fileID: 3026076633622694963}
   cacheVersion: 131849
-  cacheTime: 639053229117638915
-  SerializableEventsDict: []
+  cacheTime: 639055372393659938
+  SerializableEventsDict:
+  - key: event:/BreatheFast
+    index: 0
+  - key: event:/Attack
+    index: 1
+  - key: event:/Death
+    index: 2
+  - key: event:/BreatheSlow
+    index: 3
+  - key: event:/Damage
+    index: 4
+--- !u!114 &782239800951033016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/BreatheFast
+  m_EditorClassIdentifier: 
+  Path: event:/BreatheFast
+  Guid:
+    Data1: -1795856853
+    Data2: 1110621992
+    Data3: -580344670
+    Data4: 1262329059
+  Banks:
+  - {fileID: -122271517182417535}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 70296
+--- !u!114 &1729677594092165266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Damage
+  m_EditorClassIdentifier: 
+  Path: event:/Damage
+  Guid:
+    Data1: -865158487
+    Data2: 1130637404
+    Data3: -1386620510
+    Data4: -460487332
+  Banks:
+  - {fileID: -122271517182417535}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 500
 --- !u!114 &3026076633622694963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,10 +202,10 @@ MonoBehaviour:
   Path: Assets/FMOD/fmodggj2026/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639053229117638915
+  lastModified: 639055372393659938
   FileSizes:
   - Name: Desktop
-    Value: 724
+    Value: 952
   Exists: 1
 --- !u!114 &3483008973660353041
 MonoBehaviour:
@@ -104,3 +227,30 @@ MonoBehaviour:
   - Name: Desktop
     Value: 1074
   Exists: 1
+--- !u!114 &6413463788378748337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Death
+  m_EditorClassIdentifier: 
+  Path: event:/Death
+  Guid:
+    Data1: 1989665369
+    Data2: 1237944814
+    Data3: 211688375
+    Data4: 317229348
+  Banks:
+  - {fileID: -122271517182417535}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2500

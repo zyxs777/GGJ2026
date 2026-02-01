@@ -1,4 +1,6 @@
 using System;
+using FMOD.Studio;
+using FMODUnity;
 using Global;
 using UnityEngine;
 
@@ -8,7 +10,7 @@ namespace Player
     {
         [SerializeReference] private Animator animator;
         [SerializeField] private string slashAnimName;
-
+        [SerializeField] private EventReference attackSound;
         private void OnEnable()
         {
             _onRecAnima ??= OnRecAnima;
@@ -25,6 +27,7 @@ namespace Player
         {
             animator.Play(0);
             animator.Play(slashAnimName);
+            RuntimeManager.PlayOneShot(attackSound);
         }
         public struct PlayerAnimaSlash { }
     }

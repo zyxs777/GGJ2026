@@ -1,4 +1,5 @@
 using System;
+using FMODUnity;
 using Global;
 using PrimeTween;
 using UnityEngine;
@@ -22,12 +23,14 @@ namespace Player
             GlobalShare.EventBus.Unsubscribe(_onDeath);
         }
         #endregion
-        
+
+        [SerializeField] private EventReference deathSound;
         [SerializeReference] private Image deathImg;
         private Action<PlayerEvtDeath> _onDeath;
         private void OnPlayerDeath(PlayerEvtDeath evt)
         {
             GlobalShare.EventBus.Unsubscribe(_onDeath);
+            RuntimeManager.PlayOneShot(deathSound);
             Tween.Color(deathImg, Color.red, .2f, Ease.InBounce).OnComplete(() =>
                 {
                     Tween.Color(deathImg, Color.black, 2, Ease.OutBounce).OnComplete(() =>

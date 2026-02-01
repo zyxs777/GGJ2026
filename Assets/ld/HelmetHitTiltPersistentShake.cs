@@ -1,3 +1,4 @@
+using FMODUnity;
 using Global;
 using Player;
 using STool;
@@ -45,6 +46,7 @@ public class HelmetHitTiltPersistentShake : MonoBehaviour
     [SerializeField] private float _shakeVel;    // 晃动角速度
 
     [SerializeReference] private Transform playerRoot;
+    [SerializeField] private EventReference dmgSound;
     public float BaseTiltDeg => _baseTiltDeg; // 用这个做失败判定
     public float CurrentVisualTiltDeg => _baseTiltDeg + _shakeDeg;
     public float Fail01 => Mathf.InverseLerp(0f, _failTiltDeg, Mathf.Abs(_baseTiltDeg));
@@ -127,6 +129,7 @@ public class HelmetHitTiltPersistentShake : MonoBehaviour
         
         //发送特效
         GlobalShare.EventBus.Publish(new HelmetHitEffect3D.HelmetHitEffectData(){AttackerPos = pack.AttackerPos});
+        RuntimeManager.PlayOneShot(dmgSound);
     }
     public struct AttackPack
     {
