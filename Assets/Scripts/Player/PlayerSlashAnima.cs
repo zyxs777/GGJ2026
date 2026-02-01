@@ -3,6 +3,7 @@ using FMOD.Studio;
 using FMODUnity;
 using Global;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Player
 {
@@ -25,9 +26,16 @@ namespace Player
         private Action<PlayerAnimaSlash> _onRecAnima;
         private void OnRecAnima(PlayerAnimaSlash evt)
         {
-            animator.Play(0);
-            animator.Play(slashAnimName);
             RuntimeManager.PlayOneShot(attackSound);
+            if (Random.Range(0, 100) > 50)
+            {
+                animator.Play(slashAnimName);
+            }
+            else
+            {
+                animator.Play("PlayerSlash2");
+            }
+            
         }
         public struct PlayerAnimaSlash { }
     }
