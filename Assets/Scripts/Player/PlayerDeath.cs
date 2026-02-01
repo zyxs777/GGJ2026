@@ -2,6 +2,7 @@ using System;
 using FMODUnity;
 using Global;
 using PrimeTween;
+using Rewired;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -32,6 +33,7 @@ namespace Player
         {
             GlobalShare.EventBus.Unsubscribe(_onDeath);
             RuntimeManager.PlayOneShot(deathSound);
+            RewiredRumble.OneShot(ReInput.players.GetPlayer(0), RewiredRumble.MotorSide.Both, 1, 1, Ease.Linear);
             if (helmet.localEulerAngles.z > 0)
             {
                 GetComponent<Animator>().Play("end");

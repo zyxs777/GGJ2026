@@ -598,6 +598,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3632222491987843339}
     m_Modifications:
+    - target: {fileID: 145981466338562378, guid: 586ca1b64e2dd154faa68b7da2f4a741,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 2697.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 145981466338562378, guid: 586ca1b64e2dd154faa68b7da2f4a741,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -20
+      objectReference: {fileID: 0}
     - target: {fileID: 3147793042361597521, guid: 586ca1b64e2dd154faa68b7da2f4a741,
         type: 3}
       propertyPath: m_IsActive
@@ -830,6 +840,10 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 4527012540030000477}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8279836749302481002, guid: 586ca1b64e2dd154faa68b7da2f4a741,
+        type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 4052016152841126123}
     - targetCorrespondingSourceObject: {fileID: 1176382395528978071, guid: 586ca1b64e2dd154faa68b7da2f4a741,
         type: 3}
       insertIndex: -1
@@ -863,6 +877,35 @@ MonoBehaviour:
   effectRoot: {fileID: 5386155378451462310}
   playerRoot: {fileID: 3632222491987843339}
   eftRadius: 600
+--- !u!1 &4644748529818733115 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8279836749302481002, guid: 586ca1b64e2dd154faa68b7da2f4a741,
+    type: 3}
+  m_PrefabInstance: {fileID: 3644139470560381521}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4052016152841126123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4644748529818733115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
 --- !u!224 &5386155378451462310 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8659826482787644151, guid: 586ca1b64e2dd154faa68b7da2f4a741,
