@@ -469,6 +469,8 @@ GameObject:
   - component: {fileID: 4825562018926436194}
   - component: {fileID: 2112148288430695423}
   - component: {fileID: 3900149928674612507}
+  - component: {fileID: 5802089493797479673}
+  - component: {fileID: 2938570676826397323}
   m_Layer: 0
   m_Name: Level-2
   m_TagString: Untagged
@@ -546,8 +548,58 @@ PlayableDirector:
     value: {fileID: 7810636329095792867}
   - key: {fileID: -4580812007351673731, guid: 21785656e2e16444b8cf1633dd1c6c1f, type: 2}
     value: {fileID: 4012415039292237855}
+  - key: {fileID: 5792666416858346643, guid: 21785656e2e16444b8cf1633dd1c6c1f, type: 2}
+    value: {fileID: 2938570676826397323}
   m_ExposedReferences:
     m_References: []
+--- !u!114 &5802089493797479673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3772901199543519452}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe249335ed493a14e9eb3afb956cb060, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spawnPoints:
+  - {fileID: 955605056956812534}
+  - {fileID: 7615573962944627046}
+  - {fileID: 5678010754310809778}
+  - {fileID: 4497398004327652920}
+  _enemyPrefabs:
+  - {fileID: 7456536819291222961, guid: eb80301829c6daf429aca91ef3297dbc, type: 3}
+  - {fileID: 7456536819291222961, guid: 8571509489902824f89b1ad40ec3972e, type: 3}
+  - {fileID: 7456536819291222961, guid: 6ace3213337654747985e0e3459a8345, type: 3}
+  _maxAliveEnemies: 10
+  _spawnInterval: 5
+  _minSpawnInterval: 3
+  _intervalDecreasePerMinute: 1
+  _maxAliveIncreasePerMinute: 1
+  _enemyRoot: {fileID: 4825562018926436194}
+--- !u!95 &2938570676826397323
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3772901199543519452}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4481147614632978719
 GameObject:
   m_ObjectHideFlags: 0

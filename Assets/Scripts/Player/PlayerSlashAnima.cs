@@ -1,6 +1,7 @@
 using System;
 using Global;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Player
 {
@@ -24,7 +25,15 @@ namespace Player
         private void OnRecAnima(PlayerAnimaSlash evt)
         {
             animator.Play(0);
-            animator.Play(slashAnimName);
+            if (Random.Range(0, 100) > 50)
+            {
+                animator.Play(slashAnimName);
+            }
+            else
+            {
+                animator.Play("PlayerSlash2");
+            }
+            
         }
         public struct PlayerAnimaSlash { }
     }

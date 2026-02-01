@@ -238,6 +238,7 @@ GameObject:
   - component: {fileID: 8918498514335725882}
   - component: {fileID: 4796233451292639659}
   - component: {fileID: 4712134291399147003}
+  - component: {fileID: 7936682328789579215}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -403,6 +404,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathImg: {fileID: 3404730176557688910}
+  helmet: {fileID: 1814801408790205027}
+--- !u!95 &7936682328789579215
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6401433349218600103}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7db39144925ef6e4e8102d03a82f523b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6775181159909744829
 GameObject:
   m_ObjectHideFlags: 0
@@ -738,6 +761,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 8806925399584063614}
   m_SourcePrefab: {fileID: 100100000, guid: 586ca1b64e2dd154faa68b7da2f4a741, type: 3}
+--- !u!224 &1814801408790205027 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3151936784899430450, guid: 586ca1b64e2dd154faa68b7da2f4a741,
+    type: 3}
+  m_PrefabInstance: {fileID: 3644139470560381521}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2504507186072016070 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1176382395528978071, guid: 586ca1b64e2dd154faa68b7da2f4a741,
