@@ -24,10 +24,12 @@ namespace Global
         #endregion
 
         #region Mono
+
+        private float _lerpTime;
         private void OnEnable()
         {
             _token.SetValue(0);
-            Tween.Alpha(image, 0, 1, .5f, Ease.InOutCubic)
+            Tween.Alpha(image, 0, 1, _lerpTime, Ease.InOutCubic)
                 .OnComplete(() => {
                         _onMid?.Invoke();
                         _token.SetValue(1);
@@ -54,11 +56,13 @@ namespace Global
         private void OnRecCmd(UIEvtLerp evt)
         {
             _onMid = evt.OnLerpMiddle;
+            _lerpTime = evt.EnterTime == 0 ? 1 : evt.EnterTime;
             gameObject.SetActive(true);    
         }
         #region Evt
         public struct UIEvtLerp
         {
+            public float EnterTime;
             public Action OnLerpMiddle;
         }
         #endregion

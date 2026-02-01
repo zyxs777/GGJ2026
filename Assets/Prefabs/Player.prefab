@@ -391,6 +391,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerIndex: 0
+  breatheSound:
+    Guid:
+      Data1: -668274054
+      Data2: 1329712333
+      Data3: -1404394076
+      Data4: 354598732
+    Path: event:/BreatheSlow
 --- !u!114 &4712134291399147003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -403,6 +410,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0e6b9fcd462a2546b7e130c8a764bcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathSound:
+    Guid:
+      Data1: 1989665369
+      Data2: 1237944814
+      Data3: 211688375
+      Data4: 317229348
+    Path: event:/Death
   deathImg: {fileID: 3404730176557688910}
   helmet: {fileID: 1814801408790205027}
 --- !u!95 &7936682328789579215
@@ -604,6 +618,56 @@ PrefabInstance:
       propertyPath: playerRoot
       value: 
       objectReference: {fileID: 3632222491987843339}
+    - target: {fileID: 5425737830904303293, guid: 586ca1b64e2dd154faa68b7da2f4a741,
+        type: 3}
+      propertyPath: dmgSound.Path
+      value: event:/Damage
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425737830904303293, guid: 586ca1b64e2dd154faa68b7da2f4a741,
+        type: 3}
+      propertyPath: dmgSound.Guid.Data1
+      value: -865158487
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425737830904303293, guid: 586ca1b64e2dd154faa68b7da2f4a741,
+        type: 3}
+      propertyPath: dmgSound.Guid.Data2
+      value: 1130637404
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425737830904303293, guid: 586ca1b64e2dd154faa68b7da2f4a741,
+        type: 3}
+      propertyPath: dmgSound.Guid.Data3
+      value: -1386620510
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425737830904303293, guid: 586ca1b64e2dd154faa68b7da2f4a741,
+        type: 3}
+      propertyPath: dmgSound.Guid.Data4
+      value: -460487332
+      objectReference: {fileID: 0}
+    - target: {fileID: 6501829517131120589, guid: 586ca1b64e2dd154faa68b7da2f4a741,
+        type: 3}
+      propertyPath: attackSound.Path
+      value: event:/Attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 6501829517131120589, guid: 586ca1b64e2dd154faa68b7da2f4a741,
+        type: 3}
+      propertyPath: attackSound.Guid.Data1
+      value: 286853714
+      objectReference: {fileID: 0}
+    - target: {fileID: 6501829517131120589, guid: 586ca1b64e2dd154faa68b7da2f4a741,
+        type: 3}
+      propertyPath: attackSound.Guid.Data2
+      value: 1229964655
+      objectReference: {fileID: 0}
+    - target: {fileID: 6501829517131120589, guid: 586ca1b64e2dd154faa68b7da2f4a741,
+        type: 3}
+      propertyPath: attackSound.Guid.Data3
+      value: -219984484
+      objectReference: {fileID: 0}
+    - target: {fileID: 6501829517131120589, guid: 586ca1b64e2dd154faa68b7da2f4a741,
+        type: 3}
+      propertyPath: attackSound.Guid.Data4
+      value: 1969378640
+      objectReference: {fileID: 0}
     - target: {fileID: 6774286057074166831, guid: 586ca1b64e2dd154faa68b7da2f4a741,
         type: 3}
       propertyPath: playerRoot

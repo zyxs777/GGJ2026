@@ -36,11 +36,11 @@ namespace Global
 
         private void OnEnable()
         {
-            foreach (var slot in levelSlots)
-            {
-                var slotUI = globalLevelMenuSlots.Get();
-                slotUI.Init(slot.name, slot.prefab);
-            }
+            // foreach (var slot in levelSlots)
+            // {
+            //     var slotUI = globalLevelMenuSlots.Get();
+            //     slotUI.Init(slot.name, slot.prefab);
+            // }
 
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;

@@ -347,6 +347,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5df77dd928bbb4143a53545b55dc28fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackSound:
+    Guid:
+      Data1: -1350293603
+      Data2: 1217087181
+      Data3: -326165102
+      Data4: -1919734976
+    Path: event:/EnemyBirdAttack
 --- !u!114 &8575371252925402338
 MonoBehaviour:
   m_ObjectHideFlags: 0

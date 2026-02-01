@@ -1,4 +1,6 @@
 using System;
+using FMOD.Studio;
+using FMODUnity;
 using Global;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -9,7 +11,7 @@ namespace Player
     {
         [SerializeReference] private Animator animator;
         [SerializeField] private string slashAnimName;
-
+        [SerializeField] private EventReference attackSound;
         private void OnEnable()
         {
             _onRecAnima ??= OnRecAnima;
@@ -24,7 +26,7 @@ namespace Player
         private Action<PlayerAnimaSlash> _onRecAnima;
         private void OnRecAnima(PlayerAnimaSlash evt)
         {
-            animator.Play(0);
+            RuntimeManager.PlayOneShot(attackSound);
             if (Random.Range(0, 100) > 50)
             {
                 animator.Play(slashAnimName);

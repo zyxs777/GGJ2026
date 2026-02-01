@@ -1,4 +1,5 @@
 using System;
+using FMODUnity;
 using Global;
 using PrimeTween;
 using UnityEngine;
@@ -22,12 +23,15 @@ namespace Player
             GlobalShare.EventBus.Unsubscribe(_onDeath);
         }
         #endregion
-        
+
+        [SerializeField] private EventReference deathSound;
         [SerializeReference] private Image deathImg;
         [SerializeReference] private RectTransform helmet;
         private Action<PlayerEvtDeath> _onDeath;
         private void OnPlayerDeath(PlayerEvtDeath evt)
         {
+            GlobalShare.EventBus.Unsubscribe(_onDeath);
+            RuntimeManager.PlayOneShot(deathSound);
             if (helmet.localEulerAngles.z > 0)
             {
                 GetComponent<Animator>().Play("end");
