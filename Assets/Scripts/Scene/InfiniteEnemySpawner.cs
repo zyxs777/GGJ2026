@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Scene
 {
@@ -17,10 +18,10 @@ namespace Scene
         [SerializeField] private int _maxAliveEnemies = 5;
         [SerializeField] private float _spawnInterval = 3.0f;
         [SerializeField] private float _minSpawnInterval = 0.8f;
-
+        
         [Header("Difficulty Scaling")]
-        [SerializeField] private float _intervalDecreasePerMinute = 0.4f;
-        [SerializeField] private int _maxAliveIncreasePerMinute = 1;
+        [SerializeField] private float _intervalDecreasePerSec = 0.1f;
+        [SerializeField] private int _maxAliveIncreasePerMinute = 5;
 
         [Header("Runtime")]
         [SerializeField] private Transform _enemyRoot;
@@ -81,11 +82,11 @@ namespace Scene
 
         private void UpdateDifficulty()
         {
-            float minutes = _elapsedTime / 60f;
+            float seconds = _elapsedTime;
 
             _spawnInterval = Mathf.Max(
                 _minSpawnInterval,
-                _spawnInterval - _intervalDecreasePerMinute * minutes * Time.deltaTime
+                _spawnInterval - _intervalDecreasePerSec * seconds * Time.deltaTime
             );
 
             _maxAliveEnemies = Mathf.Max(
